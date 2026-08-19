@@ -11,7 +11,7 @@ Deno.serve(async (req: Request) => {
 
   try {
     const { password } = await req.json();
-    const adminPassword = Deno.env.get("gia2026admin");
+    const adminPassword = Deno.env.get("ADMIN_PASSWORD");
 
     if (!adminPassword) {
       return new Response(

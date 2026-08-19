@@ -16,7 +16,7 @@ Deno.serve(async (req: Request) => {
     const { password, action, ...params } = body;
 
     // Verify admin password
-    const adminPassword = Deno.env.get("gia2026admin");
+    const adminPassword = Deno.env.get("ADMIN_PASSWORD");
     if (!adminPassword || password !== adminPassword) {
       return new Response(
         JSON.stringify({ error: "Не авторизован" }),
