@@ -6,7 +6,7 @@
 
 /* ===== Premium Theme System ===== */
 
-/* Dark theme (default) */
+/* Dark theme (default) — Charcoal & Gold */
 :root {
   --c-bg-base: 18 18 20;
   --c-bg-surface: 28 28 32;
@@ -18,6 +18,9 @@
   --c-accent-soft: 212 175 55;
   --c-accent-2: 197 162 85;
   --c-busy: 192 57 43;
+  --c-success: 39 174 96;
+  --c-warning: 243 156 18;
+  --c-info: 52 152 219;
   --c-border: 255 255 255;
   --c-border-alpha: 0.08;
   --c-glass-bg: 0.55;
@@ -27,25 +30,28 @@
   --c-overlay: 0 0 0;
 }
 
-/* Light theme */
+/* Light theme — Warm Ivory & Deep Bronze */
 :root[data-theme="light"] {
-  --c-bg-base: 245 242 238;
-  --c-bg-surface: 252 250 247;
-  --c-bg-card: 255 253 250;
-  --c-text: 30 28 25;
-  --c-text-muted: 90 85 80;
-  --c-text-dim: 140 135 130;
-  --c-accent: 184 134 11;
+  --c-bg-base: 248 245 240;
+  --c-bg-surface: 255 252 247;
+  --c-bg-card: 255 253 248;
+  --c-text: 28 25 22;
+  --c-text-muted: 80 72 65;
+  --c-text-dim: 130 122 115;
+  --c-accent: 139 105 20;
   --c-accent-soft: 184 134 11;
-  --c-accent-2: 139 109 49;
-  --c-busy: 192 57 43;
-  --c-border: 0 0 0;
-  --c-border-alpha: 0.08;
-  --c-glass-bg: 0.7;
-  --c-glass-strong-bg: 0.9;
-  --c-grid-line: 0.04;
-  --c-shadow: 0 0 0;
-  --c-overlay: 255 255 255;
+  --c-accent-2: 120 88 40;
+  --c-busy: 176 48 38;
+  --c-success: 34 139 80;
+  --c-warning: 204 130 10;
+  --c-info: 41 128 185;
+  --c-border: 60 50 40;
+  --c-border-alpha: 0.10;
+  --c-glass-bg: 0.78;
+  --c-glass-strong-bg: 0.92;
+  --c-grid-line: 0.05;
+  --c-shadow: 60 50 40;
+  --c-overlay: 255 252 247;
 }
 
 * {
@@ -298,6 +304,136 @@ body {
 .status-dot.selected {
   background: rgb(var(--c-accent-2));
   box-shadow: 0 0 8px rgb(var(--c-accent-2) / 0.5), 0 0 16px rgb(var(--c-accent-2) / 0.25);
+}
+
+/* Additional accent colors */
+.neon-text-success {
+  color: rgb(var(--c-success));
+  text-shadow: 0 0 10px rgb(var(--c-success) / 0.3), 0 0 20px rgb(var(--c-success) / 0.15);
+}
+
+.neon-text-warning {
+  color: rgb(var(--c-warning));
+  text-shadow: 0 0 10px rgb(var(--c-warning) / 0.3), 0 0 20px rgb(var(--c-warning) / 0.15);
+}
+
+.neon-text-info {
+  color: rgb(var(--c-info));
+  text-shadow: 0 0 10px rgb(var(--c-info) / 0.3), 0 0 20px rgb(var(--c-info) / 0.15);
+}
+
+.neon-border-success {
+  border: 1px solid rgb(var(--c-success) / 0.4);
+  box-shadow: 0 0 12px rgb(var(--c-success) / 0.1), inset 0 0 12px rgb(var(--c-success) / 0.03);
+}
+
+.neon-border-warning {
+  border: 1px solid rgb(var(--c-warning) / 0.4);
+  box-shadow: 0 0 12px rgb(var(--c-warning) / 0.1), inset 0 0 12px rgb(var(--c-warning) / 0.03);
+}
+
+.neon-border-info {
+  border: 1px solid rgb(var(--c-info) / 0.4);
+  box-shadow: 0 0 12px rgb(var(--c-info) / 0.1), inset 0 0 12px rgb(var(--c-info) / 0.03);
+}
+
+.status-dot.success {
+  background: rgb(var(--c-success));
+  box-shadow: 0 0 8px rgb(var(--c-success) / 0.5), 0 0 16px rgb(var(--c-success) / 0.25);
+}
+
+.status-dot.warning {
+  background: rgb(var(--c-warning));
+  box-shadow: 0 0 8px rgb(var(--c-warning) / 0.5), 0 0 16px rgb(var(--c-warning) / 0.25);
+}
+
+/* Light theme adjustments for better contrast */
+:root[data-theme="light"] .glass {
+  background: rgb(var(--c-bg-surface) / var(--c-glass-bg));
+  border: 1px solid rgb(var(--c-border) / var(--c-border-alpha));
+  box-shadow: 0 2px 12px rgb(var(--c-shadow) / 0.06);
+}
+
+:root[data-theme="light"] .glass-strong {
+  background: rgb(var(--c-bg-surface) / var(--c-glass-strong-bg));
+  border: 1px solid rgb(var(--c-border) / calc(var(--c-border-alpha) + 0.03));
+  box-shadow: 0 4px 20px rgb(var(--c-shadow) / 0.08);
+}
+
+:root[data-theme="light"] .glass-card {
+  background: linear-gradient(135deg, rgb(var(--c-bg-card) / 0.9) 0%, rgb(var(--c-bg-surface) / 0.95) 100%);
+  border: 1px solid rgb(var(--c-border) / var(--c-border-alpha));
+  box-shadow: 0 2px 16px rgb(var(--c-shadow) / 0.06);
+}
+
+:root[data-theme="light"] .btn-neon {
+  background: linear-gradient(135deg, rgb(var(--c-accent) / 0.15), rgb(var(--c-accent-2) / 0.1));
+  border: 1px solid rgb(var(--c-accent) / 0.5);
+  color: rgb(var(--c-accent));
+  text-shadow: none;
+  box-shadow: 0 2px 8px rgb(var(--c-accent) / 0.1);
+}
+
+:root[data-theme="light"] .btn-neon:hover {
+  background: linear-gradient(135deg, rgb(var(--c-accent) / 0.25), rgb(var(--c-accent-2) / 0.18));
+  border-color: rgb(var(--c-accent) / 0.7);
+  box-shadow: 0 4px 16px rgb(var(--c-accent) / 0.15);
+}
+
+:root[data-theme="light"] .btn-outline {
+  border: 1px solid rgb(var(--c-border) / 0.2);
+  color: rgb(var(--c-text) / 0.85);
+  background: rgb(var(--c-border) / 0.03);
+}
+
+:root[data-theme="light"] .btn-outline:hover {
+  border-color: rgb(var(--c-accent-2) / 0.6);
+  color: rgb(var(--c-accent-2));
+  background: rgb(var(--c-accent-2) / 0.06);
+  box-shadow: 0 2px 12px rgb(var(--c-accent-2) / 0.08);
+}
+
+:root[data-theme="light"] .neon-text-green,
+:root[data-theme="light"] .neon-text-cyan {
+  text-shadow: none;
+}
+
+:root[data-theme="light"] .neon-border-green,
+:root[data-theme="light"] .neon-border-cyan {
+  box-shadow: 0 2px 8px rgb(var(--c-accent) / 0.08);
+}
+
+:root[data-theme="light"] .text-gradient-green {
+  background: linear-gradient(180deg, rgb(var(--c-text)) 0%, rgb(var(--c-accent)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+:root[data-theme="light"] .input-neon {
+  background: rgb(var(--c-bg-base) / 0.5);
+  border: 1px solid rgb(var(--c-border) / 0.15);
+}
+
+:root[data-theme="light"] .input-neon:focus {
+  border-color: rgb(var(--c-accent) / 0.6);
+  box-shadow: 0 0 0 3px rgb(var(--c-accent) / 0.1);
+}
+
+:root[data-theme="light"] .modal-backdrop {
+  background: rgb(var(--c-overlay) / 0.8);
+}
+
+:root[data-theme="light"] .grid-bg {
+  background-image:
+    linear-gradient(rgb(var(--c-accent) / var(--c-grid-line)) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--c-accent) / var(--c-grid-line)) 1px, transparent 1px);
+}
+
+:root[data-theme="light"] .skeleton {
+  background: linear-gradient(90deg, rgb(var(--c-bg-card)) 25%, rgb(var(--c-bg-surface)) 50%, rgb(var(--c-bg-card)) 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
 }
 
 /* Modal backdrop */
