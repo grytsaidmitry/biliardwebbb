@@ -22,8 +22,8 @@ export function AboutSection({ aboutText }: AboutSectionProps) {
               alt="Billiard club interior"
               className="w-full h-[400px] sm:h-[500px] object-cover transition-transform duration-1000 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050807] via-transparent to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050807]/50" />
+            <div className="absolute inset-0 bg-gradient-to-t from-base via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-base/50" />
           </div>
           {/* Floating accent card */}
           <div className="absolute -bottom-6 -right-6 glass-strong neon-border-cyan rounded-xl p-4 hidden sm:block animate-float">

@@ -13,6 +13,8 @@ import { AdminPanel } from '@/components/AdminPanel';
 import { fetchSettings } from '@/lib/booking';
 import type { BilliardTable, ClubSettings } from '@/types';
 
+type Theme = 'dark' | 'light';
+
 function App() {
   const [settings, setSettings] = useState<ClubSettings | null>(null);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
@@ -22,6 +24,25 @@ function App() {
   const [bookingStart, setBookingStart] = useState('18:00');
   const [bookingEnd, setBookingEnd] = useState('20:00');
   const [refreshKey, setRefreshKey] = useState(0);
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('theme') as Theme) || 'dark';
+    }
+    return 'dark';
+  });
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      document.documentElement.setAttribute('data-theme', next);
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   const loadSettings = useCallback(async () => {
     try {
@@ -45,7 +66,6 @@ function App() {
   };
 
   const handleBookClick = () => {
-    // Scroll to tables section for selection
     document.querySelector('#tables')?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -62,8 +82,14 @@ function App() {
   const telegramBot = settings?.telegram_bot_username ?? 'NeonBilliardBot';
 
   return (
-    <div className="min-h-screen bg-[#050807] text-white relative">
-      <Navbar clubName={clubName} telegramBot={telegramBot} onBookClick={handleBookClick} />
+    <div className="min-h-screen bg-base text-white relative">
+      <Navbar
+        clubName={clubName}
+        telegramBot={telegramBot}
+        onBookClick={handleBookClick}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
 
       <Hero
         clubName={clubName}
@@ -88,7 +114,7 @@ function App() {
       {/* Admin button (subtle, bottom-left) */}
       <button
         onClick={() => setAdminOpen(true)}
-        className="fixed bottom-4 left-4 z-40 w-10 h-10 rounded-lg glass border border-white/5 flex items-center justify-center text-white/20 hover:text-cyan-400 hover:neon-border-cyan transition-all duration-300"
+        className="fixed bottom-4 left-4 z-40 w-10 h-10 rounded-lg glass border border-white/5 flex items-center justify-center text-white/20 hover:text-green-400 hover:neon-border-green transition-all duration-300"
         title="Админ-панель"
         aria-label="Admin"
       >

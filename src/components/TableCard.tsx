@@ -32,7 +32,7 @@ export function TableCard({ availability, imageUrl, date, startTime, endTime, on
           alt={table.name}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1311] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
 
         {/* Status badge */}
         <div className="absolute top-3 right-3">

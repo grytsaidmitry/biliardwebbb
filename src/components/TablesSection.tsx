@@ -140,7 +140,7 @@ export function TablesSection({ onBookTable, refreshKey }: TablesSectionProps) {
                 className="input-neon w-full px-4 py-3 rounded-lg text-sm font-medium cursor-pointer"
               >
                 {TIME_SLOTS.map((t) => (
-                  <option key={t} value={t} className="bg-[#0d1311]">{t}</option>
+                  <option key={t} value={t} className="bg-card text-white">{t}</option>
                 ))}
               </select>
             </div>
@@ -155,7 +155,7 @@ export function TablesSection({ onBookTable, refreshKey }: TablesSectionProps) {
                 className="input-neon w-full px-4 py-3 rounded-lg text-sm font-medium cursor-pointer"
               >
                 {TIME_SLOTS.map((t) => (
-                  <option key={t} value={t} className="bg-[#0d1311]">{t}</option>
+                  <option key={t} value={t} className="bg-card text-white">{t}</option>
                 ))}
               </select>
             </div>

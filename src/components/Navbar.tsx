@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, Send } from 'lucide-react';
+import { Menu, X, Send, Sun, Moon } from 'lucide-react';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { IMAGES } from '@/lib/images';
 
@@ -7,6 +7,8 @@ interface NavbarProps {
   clubName: string;
   telegramBot: string;
   onBookClick: () => void;
+  theme: 'dark' | 'light';
+  onToggleTheme: () => void;
 }
 
 const NAV_LINKS = [
@@ -17,7 +19,7 @@ const NAV_LINKS = [
   { label: 'КОНТАКТЫ', href: '#contacts' },
 ];
 
-export function Navbar({ clubName, telegramBot, onBookClick }: NavbarProps) {
+export function Navbar({ clubName, telegramBot, onBookClick, theme, onToggleTheme }: NavbarProps) {
   const scrolled = useScrollPosition();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -58,6 +60,16 @@ export function Navbar({ clubName, telegramBot, onBookClick }: NavbarProps) {
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
+          {/* Theme toggle */}
+          <button
+            onClick={onToggleTheme}
+            className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white/60 hover:text-white transition-colors rounded-lg"
+            title={theme === 'dark' ? 'Светлая тема' : 'Тёмная тема'}
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
+
           <a
             href={`https://t.me/${telegramBot}`}
             target="_blank"
@@ -75,13 +87,22 @@ export function Navbar({ clubName, telegramBot, onBookClick }: NavbarProps) {
           </button>
         </div>
 
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden p-2 text-white/80 hover:text-white"
-          aria-label="Menu"
-        >
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <button
+            onClick={onToggleTheme}
+            className="p-2 text-white/70 hover:text-white transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </button>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2 text-white/80 hover:text-white"
+            aria-label="Menu"
+          >
+            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {mobileOpen && (

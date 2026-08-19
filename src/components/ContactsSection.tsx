@@ -147,7 +147,7 @@ export function ContactsSection({ settings, onBookClick }: ContactsSectionProps)
               alt="Batumi location"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050807] via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-base via-black/30 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
               <div className="glass-strong rounded-xl p-4 inline-block">
                 <p className="font-display font-bold text-lg text-white">BATUMI</p>

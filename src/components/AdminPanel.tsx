@@ -244,7 +244,7 @@ export function AdminPanel({ open, onClose, telegramBot }: AdminPanelProps) {
                     className="input-neon px-3 py-2 rounded-lg text-xs"
                   >
                     {tables.map((t) => (
-                      <option key={t.id} value={t.id} className="bg-[#0d1311]">{t.name}</option>
+                      <option key={t.id} value={t.id} className="bg-card text-white">{t.name}</option>
                     ))}
                   </select>
                   <input type="date" value={manualForm.date} onChange={(e) => setManualForm({ ...manualForm, date: e.target.value })} className="input-neon px-3 py-2 rounded-lg text-xs" />
@@ -357,7 +357,7 @@ function BookingRow({
               className="input-neon px-2 py-1.5 rounded text-xs"
             >
               {tables.map((t) => (
-                <option key={t.id} value={t.id} className="bg-[#0d1311]">{t.name}</option>
+                <option key={t.id} value={t.id} className="bg-card text-white">{t.name}</option>
               ))}
             </select>
             <input type="date" value={editForm.booking_date} onChange={(e) => onEditChange({ ...editForm, booking_date: e.target.value })} className="input-neon px-2 py-1.5 rounded text-xs" />
