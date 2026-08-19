@@ -77,7 +77,7 @@ export function PricingSection() {
                   <span className="font-display font-black text-4xl text-gradient">
                     {tier.price_per_hour}
                   </span>
-                  <span className="text-sm text-white/40">₽/час</span>
+                  <span className="text-sm text-white/40">₾/час</span>
                 </div>
                 {tier.tier_key === 'vip' && (
                   <div className="mt-6 pt-4 border-t border-white/5">
