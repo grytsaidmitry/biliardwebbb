@@ -11,13 +11,17 @@ interface ContactsSectionProps {
 export function ContactsSection({ settings, onBookClick }: ContactsSectionProps) {
   const { ref, revealed } = useReveal();
 
-  if (!settings) return null;
+  const address = settings?.address ?? 'Батуми, ул. Руставели, 1';
+  const phone = settings?.phone ?? '+995 555 123 456';
+  const telegramBot = settings?.telegram_bot_username ?? 'billiardbooking_bot';
+  const hoursWeekday = settings?.hours_weekday ?? '12:00 — 03:00';
+  const hoursWeekend = settings?.hours_weekend ?? '10:00 — 04:00';
 
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    settings.address + ' Batumi Georgia'
+    address + ' Batumi Georgia'
   )}`;
-  const phoneHref = `tel:${settings.phone.replace(/[\s+]/g, '')}`;
-  const telegramUrl = `https://t.me/${settings.telegram_bot_username}`;
+  const phoneHref = `tel:${phone.replace(/[\s+]/g, '')}`;
+  const telegramUrl = `https://t.me/${telegramBot}`;
 
   return (
     <section id="contacts" className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -47,7 +51,7 @@ export function ContactsSection({ settings, onBookClick }: ContactsSectionProps)
               <div className="flex-1 min-w-0">
                 <p className="text-xs text-white/40 uppercase tracking-wider mb-1">Адрес</p>
                 <p className="text-white/80 text-sm group-hover:text-green-400 transition-colors">
-                  {settings.address}
+                  {address}
                 </p>
               </div>
               <div className="flex items-center gap-1 text-white/30 group-hover:text-green-400 transition-colors">
@@ -69,7 +73,7 @@ export function ContactsSection({ settings, onBookClick }: ContactsSectionProps)
               <div className="flex-1 min-w-0">
                 <p className="text-xs text-white/40 uppercase tracking-wider mb-1">Телефон</p>
                 <p className="text-white/80 text-sm group-hover:text-cyan-400 transition-colors">
-                  {settings.phone}
+                  {phone}
                 </p>
               </div>
               <div className="flex items-center gap-1 text-white/30 group-hover:text-cyan-400 transition-colors">
@@ -93,7 +97,7 @@ export function ContactsSection({ settings, onBookClick }: ContactsSectionProps)
               <div className="flex-1 min-w-0">
                 <p className="text-xs text-white/40 uppercase tracking-wider mb-1">Telegram</p>
                 <p className="text-white/80 text-sm group-hover:text-green-400 transition-colors">
-                  @{settings.telegram_bot_username}
+                  @{telegramBot}
                 </p>
               </div>
               <div className="flex items-center gap-1 text-white/30 group-hover:text-green-400 transition-colors">
@@ -111,8 +115,8 @@ export function ContactsSection({ settings, onBookClick }: ContactsSectionProps)
               </div>
               <div>
                 <p className="text-xs text-white/40 uppercase tracking-wider mb-1">Часы работы</p>
-                <p className="text-white/80 text-sm">Будни: {settings.hours_weekday}</p>
-                <p className="text-white/80 text-sm">Выходные: {settings.hours_weekend}</p>
+                <p className="text-white/80 text-sm">Будни: {hoursWeekday}</p>
+                <p className="text-white/80 text-sm">Выходные: {hoursWeekend}</p>
               </div>
             </div>
 
